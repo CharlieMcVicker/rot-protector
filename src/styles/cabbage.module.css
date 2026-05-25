@@ -1,0 +1,27 @@
+.container { min-height: 100vh; background-color: #fcf1f5; background-image: radial-gradient(#f48fb1 2px, transparent 2px); background-size: 20px 20px; padding: 2rem; color: #4a148c; font-family: 'Verdana', 'MS PGothic', sans-serif; font-size: 14px; cursor: crosshair; }
+.content { max-width: 800px; margin: 0 auto; background: #fff; border: 3px dotted #ff4081; padding: 2rem; box-shadow: 5px 5px 0px rgba(255, 64, 129, 0.2); }
+.title { text-align: center; font-size: 28px; background: #ff4081; color: #fff; padding: 10px; border: 2px solid #c51162; margin-bottom: 2rem; font-weight: bold; text-transform: lowercase; letter-spacing: 2px; }
+.grid { display: flex; flex-direction: column; gap: 2rem; }
+.card { border: 2px solid #f48fb1; padding: 1.5rem; background: #fffafb; }
+.cardHeader { background: #f8bbd0; padding: 8px; border: 2px solid #f48fb1; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+.cardHeader h2 { margin: 0; font-size: 16px; color: #c51162; font-weight: bold; }
+.wheelContainer { height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; background: url('https://cabbagesorter.net/assets/images/layout-5/sc2-bl.png') repeat-x bottom; border: 1px solid #ccc; }
+.wheel3d { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; width: 80%; background: rgba(255,255,255,0.8); padding: 1rem; border: 1px dotted #ff4081; }
+.wheelItem { padding: 0.5rem; font-size: 14px; color: #888; text-decoration: line-through; }
+.wheelItem.active { color: #ff4081; font-weight: bold; text-decoration: none; background: #f8bbd0; padding: 0.5rem 1rem; border: 1px dashed #c51162; }
+.spinButton { width: 100%; padding: 0.8rem; border: 2px solid #c51162; background: #f48fb1; color: #fff; font-size: 14px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer; }
+.spinButton:hover { background: #ff4081; }
+.trackerFilters { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; background: #fce4ec; padding: 0.5rem; border: 1px solid #f48fb1; }
+.filterBtn { background: #fff; border: 1px solid #ccc; color: #666; padding: 0.2rem 0.5rem; cursor: pointer; font-size: 12px; }
+.activeFilter { background: #c51162; color: #fff; border-color: #c51162; }
+.chartsContainer { display: flex; flex-direction: column; gap: 2rem; }
+.chartWrapper h3 { font-size: 14px; margin-bottom: 1rem; color: #fff; background: #4a148c; padding: 3px 6px; display: inline-block; }
+.barChart { display: flex; align-items: flex-end; height: 120px; gap: 2px; padding-bottom: 2px; border-bottom: 2px solid #4a148c; border-left: 2px solid #4a148c; padding-left: 5px; }
+.bar { flex: 1; background: #ff4081; border: 1px solid #c51162; border-bottom: none; min-height: 2px; }
+.barMood { flex: 1; background: #8e24aa; border: 1px solid #4a148c; border-bottom: none; min-height: 2px; }
+.entrySection { margin-top: 2rem; padding-top: 1rem; border-top: 2px dotted #f48fb1; }
+.entrySection h3 { font-size: 14px; background: #fce4ec; display: inline-block; padding: 2px 5px; }
+.entryItem label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+.enumBox { display: flex; gap: 2px; }
+.enumBtn { flex: 1; padding: 0.5rem; background: #eee; border: 1px solid #ccc; color: #333; cursor: pointer; font-family: inherit; font-size: 14px; }
+.enumActive { background: #ff4081; color: #fff; border-color: #c51162; font-weight: bold; }

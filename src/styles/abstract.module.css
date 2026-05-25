@@ -1,0 +1,28 @@
+.container { min-height: 100vh; background: #8e9bb0; padding: 2rem; color: #3b2f2f; font-family: 'Georgia', 'Palatino Linotype', serif; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 10px, transparent 10px, transparent 20px); }
+.content { max-width: 1000px; margin: 0 auto; position: relative; }
+.title { font-size: 4rem; text-transform: lowercase; color: #ff9d5c; text-shadow: 4px 4px 0 #4a5c82; margin-bottom: 3rem; font-style: italic; letter-spacing: -2px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+@media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+.card { background: #e3cba8; border: 5px solid #24428b; padding: 2rem; box-shadow: 10px 10px 0 #ff9d5c; transform: rotate(-1deg); transition: transform 0.3s; position: relative; }
+.card:hover { transform: rotate(0deg); }
+.cardHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 4px solid #24428b; padding-bottom: 1rem; }
+.cardHeader h2 { margin: 0; font-size: 1.8rem; font-weight: bold; color: #24428b; }
+.wheelContainer { height: 250px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; border: 2px dashed #ff9d5c; background: rgba(255,255,255,0.2); }
+.wheel3d { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; width: 90%; }
+.wheelItem { padding: 1rem; background: #c49a6c; border: 3px solid #3b2f2f; font-size: 1.2rem; color: #fff; width: 100%; text-align: center; font-weight: bold; }
+.wheelItem.active { background: #ff9d5c; border-color: #24428b; color: #24428b; transform: scale(1.05) translate(5px, -5px); box-shadow: -5px 5px 0 #24428b; }
+.spinButton { width: 100%; padding: 1rem; border: 4px solid #24428b; background: #fff; color: #24428b; font-size: 1.5rem; font-weight: bold; text-transform: lowercase; display: flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer; box-shadow: 5px 5px 0 #ff9d5c; }
+.spinButton:hover { background: #24428b; color: #fff; }
+.trackerFilters { display: flex; gap: 1rem; margin-bottom: 2rem; }
+.filterBtn { background: transparent; border: 2px solid #24428b; color: #24428b; padding: 0.5rem 1rem; cursor: pointer; font-family: inherit; font-weight: bold; }
+.activeFilter { background: #24428b; color: #fff; }
+.chartsContainer { display: flex; flex-direction: column; gap: 3rem; }
+.chartWrapper h3 { font-size: 1.2rem; margin-bottom: 1rem; color: #24428b; font-weight: bold; background: rgba(255,255,255,0.5); display: inline-block; padding: 0.2rem 0.5rem; }
+.barChart { display: flex; align-items: flex-end; height: 150px; gap: 5px; padding-bottom: 5px; border-bottom: 4px solid #3b2f2f; }
+.bar { flex: 1; background: #8e9bb0; border: 2px solid #3b2f2f; border-bottom: none; min-height: 5px; }
+.barMood { flex: 1; background: #c49a6c; border: 2px solid #3b2f2f; border-bottom: none; min-height: 5px; }
+.entrySection { margin-top: 2rem; padding-top: 2rem; border-top: 4px solid #24428b; }
+.entryItem label { display: block; margin-bottom: 1rem; font-weight: bold; color: #24428b; }
+.enumBox { display: flex; gap: 0.5rem; }
+.enumBtn { flex: 1; padding: 1rem 0; background: #fff; border: 3px solid #3b2f2f; color: #3b2f2f; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 3px 3px 0 #8e9bb0; }
+.enumActive { background: #ff9d5c; border-color: #24428b; color: #24428b; transform: translate(2px, 2px); box-shadow: 1px 1px 0 #8e9bb0; }

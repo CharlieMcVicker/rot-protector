@@ -1,0 +1,27 @@
+.container { min-height: 100vh; background: linear-gradient(to bottom, #50447A, #3A2F5B, #1B1525); padding: 2rem; color: #f2b5a1; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', sans-serif; overflow-x: hidden; }
+.content { max-width: 900px; margin: 0 auto; position: relative; }
+.title { text-align: center; font-size: 3.5rem; font-style: italic; color: #ffb199; text-shadow: 2px 2px 8px rgba(0,0,0,0.8), -1px -1px 0 #fff; margin-bottom: 2rem; border-bottom: 3px solid #ffb199; padding-bottom: 1rem; position: relative; }
+.title::after { content: ''; position: absolute; bottom: -8px; left: 20%; width: 5px; height: 30px; background: #ffb199; border-radius: 5px; box-shadow: 100px 5px 0 #ffb199, 200px -2px 0 #ffb199, 300px 10px 0 #ffb199; opacity: 0.7; }
+.grid { display: flex; flex-direction: column; gap: 4rem; }
+.card { background: rgba(30, 20, 50, 0.6); border: 3px solid #6A5B92; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; padding: 3rem; box-shadow: inset 0 0 30px rgba(138, 112, 189, 0.3), 10px 10px 20px rgba(0,0,0,0.5); backdrop-filter: blur(5px); }
+.cardHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 2px dashed #8b75b8; padding-bottom: 1rem; }
+.cardHeader h2 { margin: 0; font-size: 1.8rem; color: #ffd6c9; font-weight: normal; }
+.wheelContainer { height: 250px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; }
+.wheel3d { display: flex; flex-direction: column; gap: 1rem; align-items: center; width: 80%; }
+.wheelItem { padding: 0.8rem 2rem; background: rgba(0,0,0,0.3); border: 2px solid transparent; border-radius: 20px 0 20px 0; font-size: 1.2rem; color: #b8a6d9; transition: all 0.4s; text-align: center; width: 100%; }
+.wheelItem.active { background: linear-gradient(90deg, #ffb199, #e07a5f); color: #221533; border-color: #fff; font-weight: bold; transform: scale(1.1) rotate(-2deg); border-radius: 0 20px 0 20px; box-shadow: 0 5px 15px rgba(224, 122, 95, 0.5); }
+.spinButton { width: 100%; padding: 1rem; border-radius: 30px; border: 2px solid #ffb199; background: transparent; color: #ffb199; font-size: 1.2rem; font-style: italic; display: flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer; transition: all 0.3s; }
+.spinButton:hover { background: #ffb199; color: #1B1525; box-shadow: 0 0 20px #ffb199; }
+.trackerFilters { display: flex; gap: 1rem; margin-bottom: 2rem; justify-content: center; }
+.filterBtn { background: transparent; border: 1px dotted #8b75b8; color: #b8a6d9; padding: 0.5rem 1rem; border-radius: 10px; cursor: pointer; font-family: inherit; }
+.activeFilter { background: rgba(139, 117, 184, 0.3); border-color: #ffd6c9; color: #ffd6c9; }
+.chartsContainer { display: flex; flex-direction: column; gap: 3rem; }
+.chartWrapper h3 { font-size: 1.1rem; margin-bottom: 1rem; color: #ffd6c9; border-bottom: 1px solid rgba(255, 214, 201, 0.3); display: inline-block; }
+.barChart { display: flex; align-items: flex-end; height: 150px; gap: 6px; padding-bottom: 5px; border-bottom: 2px solid #8b75b8; }
+.bar { flex: 1; background: linear-gradient(to top, #6A5B92, #b8a6d9); border-radius: 10px 10px 0 0; min-height: 5px; position: relative; }
+.barMood { flex: 1; background: linear-gradient(to top, #e07a5f, #ffb199); border-radius: 10px 10px 0 0; min-height: 5px; }
+.entrySection { margin-top: 3rem; padding-top: 2rem; border-top: 2px dashed #8b75b8; }
+.entryItem label { display: block; margin-bottom: 1rem; color: #ffd6c9; font-size: 1.1rem; }
+.enumBox { display: flex; gap: 1rem; justify-content: center; }
+.enumBtn { width: 50px; height: 50px; background: rgba(0,0,0,0.3); border: 2px solid #6A5B92; color: #b8a6d9; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: all 0.2s; }
+.enumActive { background: #ffb199; border-color: #fff; color: #1B1525; box-shadow: 0 0 15px #ffb199; transform: translateY(-5px); }
