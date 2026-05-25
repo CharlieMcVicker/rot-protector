@@ -110,7 +110,7 @@ export default function DailyTracker({ appData }) {
           {optionsList.map((opt) => (
             <button 
               key={opt}
-              onClick={() => handleUpdate(t.id, opt)}
+              onClick={() => handleUpdate(t.id, val === opt ? undefined : opt)}
               style={{
                 background: val === opt ? 'var(--primary-color)' : 'var(--bg-color)',
                 color: val === opt ? '#fff' : 'var(--accent-color)',
