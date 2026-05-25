@@ -115,10 +115,16 @@ export default function DailyTracker({ appData }) {
                 background: val === opt ? 'var(--primary-color)' : 'var(--bg-color)',
                 color: val === opt ? '#fff' : 'var(--accent-color)',
                 border: '2px solid var(--primary-color)',
-                padding: '0.5rem',
+                padding: '0.5rem 0.2rem',
                 flex: 1,
-                fontSize: '0.9rem',
-                minWidth: '50px'
+                fontSize: '0.75rem',
+                minWidth: '50px',
+                wordBreak: 'break-word',
+                lineHeight: '1.1',
+                minHeight: '2.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}
             >
               {opt}

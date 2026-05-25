@@ -159,8 +159,17 @@ export default function Charts({ appData }) {
                 borderBottom: idx < trackers.length - 1 ? '1px dashed var(--secondary-color)' : 'none',
                 paddingBottom: idx < trackers.length - 1 ? '0.75rem' : '0'
               }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
-                  <span style={{ fontWeight: 'bold', color: 'var(--text-color)', fontSize: '0.9rem', textTransform: 'lowercase' }}>{t.name}</span>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem', gap: '0.5rem' }}>
+                  <span style={{ 
+                    fontWeight: 'bold', 
+                    color: 'var(--text-color)', 
+                    fontSize: '0.85rem', 
+                    textTransform: 'lowercase',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    flex: 1
+                  }}>{t.name}</span>
                   <button 
                     onClick={() => toggleSize(t.id)} 
                     style={{ 
@@ -169,7 +178,9 @@ export default function Charts({ appData }) {
                       background: 'var(--secondary-color)', 
                       border: '1px solid var(--accent-color)',
                       color: '#fff',
-                      fontWeight: 'bold'
+                      fontWeight: 'bold',
+                      whiteSpace: 'nowrap',
+                      flexShrink: 0
                     }}
                   >
                     SIZE: {size.toUpperCase()}
@@ -250,7 +261,9 @@ export default function Charts({ appData }) {
                         display: 'flex', 
                         gap: dates.length > 90 ? '0px' : (dates.length > 30 ? '1px' : '3px'), 
                         paddingLeft: '4px',
-                        paddingTop: '2px'
+                        paddingTop: '2px',
+                        width: '100%',
+                        boxSizing: 'border-box'
                       }}>
                         {dates.map((date, idx) => {
                           const label = getXLabel(date, idx);
@@ -260,10 +273,11 @@ export default function Charts({ appData }) {
                               style={{ 
                                 flex: 1, 
                                 textAlign: dates.length > 30 ? 'left' : 'center', 
-                                fontSize: '8px', 
+                                fontSize: '7px', 
                                 color: 'var(--text-color)',
                                 whiteSpace: 'nowrap',
-                                overflow: 'visible'
+                                overflow: 'visible',
+                                letterSpacing: '-0.5px'
                               }}
                             >
                               {label}
