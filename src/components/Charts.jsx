@@ -214,13 +214,15 @@ export default function Charts({ appData }) {
                       display: 'flex', 
                       alignItems: 'flex-end', 
                       height: HEIGHTS[size], 
-                      gap: dates.length > 90 ? '0px' : (dates.length > 30 ? '1px' : '3px'),
+                      gap: dates.length > 60 ? '0px' : (dates.length > 30 ? '1px' : '3px'),
                       paddingBottom: '4px',
                       borderBottom: '2px solid var(--primary-color)',
                       borderLeft: '2px solid var(--primary-color)',
                       paddingLeft: '4px',
-                      overflow: 'hidden', // Squish, no scroll!
-                      transition: 'height 0.3s'
+                      overflow: 'hidden', 
+                      transition: 'height 0.3s',
+                      width: '100%',
+                      boxSizing: 'border-box'
                     }}>
                       {dates.map(date => {
                         let val = entries[date] ? entries[date][t.id] : undefined;
@@ -259,11 +261,12 @@ export default function Charts({ appData }) {
                     {size === 'large' && (
                       <div style={{ 
                         display: 'flex', 
-                        gap: dates.length > 90 ? '0px' : (dates.length > 30 ? '1px' : '3px'), 
+                        gap: dates.length > 60 ? '0px' : (dates.length > 30 ? '1px' : '3px'), 
                         paddingLeft: '4px',
                         paddingTop: '2px',
                         width: '100%',
-                        boxSizing: 'border-box'
+                        boxSizing: 'border-box',
+                        overflow: 'hidden'
                       }}>
                         {dates.map((date, idx) => {
                           const label = getXLabel(date, idx);
@@ -277,7 +280,8 @@ export default function Charts({ appData }) {
                                 color: 'var(--text-color)',
                                 whiteSpace: 'nowrap',
                                 overflow: 'visible',
-                                letterSpacing: '-0.5px'
+                                letterSpacing: '-0.5px',
+                                minWidth: 0
                               }}
                             >
                               {label}
