@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ColorPicker from './ColorPicker';
 
 export default function Wheels({ appData }) {
   const { data, updateWheels } = appData;
@@ -18,6 +19,9 @@ export default function Wheels({ appData }) {
 
   const [showNewWheelModal, setShowNewWheelModal] = useState(false);
   const [newWheelName, setNewWheelName] = useState('');
+  const [activeColorPickerId, setActiveColorPickerId] = useState(null);
+
+  const defaultColors = ['#f48fb1', '#ce93d8', '#90caf9', '#a5d6a7', '#fff59d', '#ffcc80'];
 
   // Handle setting active wheel
   const handleSelectWheel = (id) => {
@@ -54,7 +58,6 @@ export default function Wheels({ appData }) {
     setRotation(newRotation);
     
     setTimeout(() => {
-      // conic-gradient starts at 12 o'clock (0 degrees) and runs clockwise.
       const selectedAngle = (360 - (newRotation % 360)) % 360;
       const totalWeight = activeWheel.items.reduce((s, i) => s + i.weight, 0);
       let accumAngle = 0;
@@ -167,8 +170,6 @@ export default function Wheels({ appData }) {
     });
     updateWheels(updatedWheels);
   };
-
-  const defaultColors = ['#f48fb1', '#ce93d8', '#90caf9', '#a5d6a7', '#fff59d', '#ffcc80'];
 
   // Dynamic CSS Conic-Gradient Generation
   const getConicGradient = (items) => {
@@ -305,25 +306,18 @@ export default function Wheels({ appData }) {
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-              
-              {/* Box shadow stays still, inner wheel spins */}
               <div style={{ position: 'relative', width: '220px', height: '220px', marginBottom: '1.5rem', borderRadius: '50%', boxShadow: '5px 5px 0px rgba(0,0,0,0.15)' }}>
-                {/* Pointer Needle */}
                 <div style={{
                   position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)',
                   width: 0, height: 0, borderLeft: '12px solid transparent', borderRight: '12px solid transparent', borderTop: '20px solid var(--accent-color)',
                   zIndex: 10, filter: 'drop-shadow(2px 2px 0px rgba(0,0,0,0.15))'
                 }} />
-                
-                {/* Spinning Wheel */}
                 <div style={{
                   width: '100%', height: '100%', borderRadius: '50%', border: '5px solid var(--primary-color)',
                   background: getConicGradient(items), transform: `rotate(${rotation}deg)`,
                   transition: spinning ? 'transform 3s cubic-bezier(0.15, 0.85, 0.15, 1)' : 'none'
                 }} />
               </div>
-
-
               <button 
                 onClick={spinWheel} disabled={spinning} 
                 style={{ width: '100%', maxWidth: '320px', fontSize: '1.2rem', padding: '0.8rem', border: '3px solid var(--accent-color)', boxShadow: '4px 4px 0px rgba(0,0,0,0.15)', marginBottom: '1rem' }}
@@ -341,22 +335,6 @@ export default function Wheels({ appData }) {
             </div>
           )}
         </div>
-
-        <style>{`
-          @keyframes retroShake {
-            0% { transform: translate(1px, 1px) rotate(0deg); }
-            10% { transform: translate(-1px, -1px) rotate(-1deg); }
-            20% { transform: translate(-2px, 0px) rotate(1deg); }
-            30% { transform: translate(1px, 1px) rotate(0deg); }
-            40% { transform: translate(1px, -1px) rotate(1deg); }
-            50% { transform: translate(-1px, 1px) rotate(-1deg); }
-            60% { transform: translate(-2px, 0px) rotate(0deg); }
-            70% { transform: translate(1px, 1px) rotate(-1deg); }
-            80% { transform: translate(-1px, -1px) rotate(1deg); }
-            90% { transform: translate(1px, 1px) rotate(0deg); }
-            100% { transform: translate(1px, -1px) rotate(-1deg); }
-          }
-        `}</style>
       </div>
     );
   }
@@ -395,12 +373,13 @@ export default function Wheels({ appData }) {
               activeWheel.items.map((item, index) => (
                 <div key={item.id} style={{ borderBottom: '1px dotted var(--secondary-color)', paddingBottom: '0.4rem', marginBottom: '0.4rem', display: 'flex', flexDirection: 'column' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <input 
-                      type="color" 
-                      value={item.color || defaultColors[index % defaultColors.length]} 
-                      onChange={e => changeItemColor(item.id, e.target.value)} 
-                      style={{ width: '24px', height: '24px', padding: 0, border: 'none', cursor: 'pointer' }} 
-                      title="Slice Color"
+                    <div 
+                      onClick={() => setActiveColorPickerId(item.id)}
+                      style={{ 
+                        width: '24px', height: '24px', 
+                        background: item.color || defaultColors[index % defaultColors.length], 
+                        border: '1px solid var(--accent-color)', cursor: 'pointer', borderRadius: '2px'
+                      }} 
                     />
                     <div style={{ fontWeight: 'bold', fontSize: '0.85rem', color: 'var(--text-color)', wordBreak: 'break-word', flex: 1 }}>{item.text}</div>
                   </div>
@@ -421,6 +400,14 @@ export default function Wheels({ appData }) {
             <button onClick={addItem} style={{ padding: '0 1rem', fontSize: '0.9rem' }}>ADD</button>
           </div>
         </div>
+
+        {activeColorPickerId && (
+          <ColorPicker 
+            color={activeWheel.items.find(i => i.id === activeColorPickerId)?.color || defaultColors[activeWheel.items.findIndex(i => i.id === activeColorPickerId) % defaultColors.length]}
+            onChange={(color) => changeItemColor(activeColorPickerId, color)}
+            onClose={() => setActiveColorPickerId(null)}
+          />
+        )}
       </div>
     );
   }

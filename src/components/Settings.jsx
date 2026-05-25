@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ColorPicker from './ColorPicker';
 
 const PALLETES = [
   {
@@ -79,6 +80,7 @@ export default function Settings({ appData }) {
   const { data, overwriteData, updateTheme, DEFAULT_THEME } = appData;
   const theme = data.theme || DEFAULT_THEME;
   const [importText, setImportText] = useState('');
+  const [activePicker, setActivePicker] = useState(null);
 
   const exportStr = JSON.stringify(data, null, 2);
 
@@ -130,27 +132,33 @@ export default function Settings({ appData }) {
 
         <div style={{ marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           <label>Custom Colors</label>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <input type="color" value={theme.primary} onChange={e => handleThemeChange('primary', e.target.value)} style={{ width: '40px', height: '40px', padding: 0 }} />
-            <span>Primary</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <input type="color" value={theme.secondary} onChange={e => handleThemeChange('secondary', e.target.value)} style={{ width: '40px', height: '40px', padding: 0 }} />
-            <span>Secondary</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <input type="color" value={theme.tertiary} onChange={e => handleThemeChange('tertiary', e.target.value)} style={{ width: '40px', height: '40px', padding: 0 }} />
-            <span>Tertiary (Bg)</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <input type="color" value={theme.accent} onChange={e => handleThemeChange('accent', e.target.value)} style={{ width: '40px', height: '40px', padding: 0 }} />
-            <span>Accent / Borders</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <input type="color" value={theme.text} onChange={e => handleThemeChange('text', e.target.value)} style={{ width: '40px', height: '40px', padding: 0 }} />
-            <span>Text</span>
-          </div>
+          {[
+            { key: 'primary', label: 'Primary' },
+            { key: 'secondary', label: 'Secondary' },
+            { key: 'tertiary', label: 'Tertiary (Bg)' },
+            { key: 'accent', label: 'Accent / Borders' },
+            { key: 'text', label: 'Text' }
+          ].map(({ key, label }) => (
+            <div key={key} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <div 
+                onClick={() => setActivePicker(key)}
+                style={{ 
+                  width: '40px', height: '40px', background: theme[key], 
+                  border: '2px solid var(--accent-color)', borderRadius: '4px', cursor: 'pointer' 
+                }} 
+              />
+              <span onClick={() => setActivePicker(key)} style={{ cursor: 'pointer' }}>{label}</span>
+            </div>
+          ))}
         </div>
+
+        {activePicker && (
+          <ColorPicker 
+            color={theme[activePicker]} 
+            onChange={(color) => handleThemeChange(activePicker, color)}
+            onClose={() => setActivePicker(null)}
+          />
+        )}
 
         <div style={{ marginBottom: '1.5rem' }}>
           <label>Background Style</label>
